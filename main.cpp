@@ -1,8 +1,12 @@
+// Brice Yang
+// 3/17/2026
+// CPSC-25-12703
+
 #include <fstream>
 #include <sstream>
 #include "LinkedList.h"
 
-void introduction() {
+void introduction() { 
     cout << "Welcome to the Castle Adventure!\n";
     cout << "You will navigate through various rooms in the castle, encountering challenges and making decisions that will determine your path.\n";
     cout << "Choose your actions wisely. Let's start your journey!\n\n";
@@ -17,6 +21,7 @@ int main() {
     LinkedList castleRooms;
     ifstream file("rooms.csv");
     string line;
+    
 
     // Reading rooms from the CSV file
     if (file.is_open()) {
@@ -50,7 +55,7 @@ int main() {
 
     // Interaction with rooms
     auto current = castleRooms.getHead();
-    while (current != nullptr) {
+    while (current != nullptr) { // Runs while 'current' does not point to a null object
         cout << current->room.toString() << endl;
 
         // Display actions for the current room
@@ -66,15 +71,19 @@ int main() {
 
         // Process choice
         if (choice < 1 || choice > current->room.getActions().size()) {
-            cout << "Invalid choice. Try again.\n";
+            cout << "Invalid choice. Try again.\n"; // Declares after an invalid input by the User.
         } else {
             cout << "You chose: " << current->room.getActions()[choice - 1] << endl;
             if (choice == current->room.getActions().size()) {  // Assumes 'Leave the room' is the last action
                 current = current->next;  // Move to next room
             }
         }
+
     }
 
-    cout << "You have reached the end of your adventure!\n";
+
+
+    // Runs when the game ends
+    cout << "You have reached the end of your adventure.\n";
     return 0;
 }
