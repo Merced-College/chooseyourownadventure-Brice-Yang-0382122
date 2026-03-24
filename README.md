@@ -11,5 +11,5 @@ TO DO
 'main' integrate 'player' into
 'main' integrate 'enemies' into
 'Room' class change to allow enemies; Also change 'room.csv'
-'main' add 'void' logic for 'player' and 'enemy'
+'main' add 'void' logic for 'player_health' and 'enemy'
 

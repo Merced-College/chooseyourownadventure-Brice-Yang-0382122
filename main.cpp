@@ -1,4 +1,5 @@
 // Brice Yang
+// Yen Her
 // 3/17/2026
 // CPSC-25-12703
 
@@ -19,6 +20,7 @@ void introduction() {
 
 int main() {
     LinkedList castleRooms;
+    LinkedList castleEnemies;
     ifstream file("rooms.csv");
     string line;
     
@@ -77,6 +79,9 @@ int main() {
             if (choice == current->room.getActions().size()) {  // Assumes 'Leave the room' is the last action
                 current = current->next;  // Move to next room
             }
+            
+            
+
         }
 
     }
