@@ -10,6 +10,6 @@ TO DO
 'enemies.csv' remove old strings; add new strings
 'main' integrate 'player' into
 'main' integrate 'enemies' into
-'Room' add enemy encounters; Change 'Room' class to allow enemies; Also change 'room.csv'
+'Room' class change to allow enemies; Also change 'room.csv'
 'main' add 'void' logic for 'player' and 'enemy'
 
