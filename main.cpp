@@ -6,6 +6,7 @@
 #include <fstream>
 #include <sstream>
 #include "LinkedList.h"
+#include "Enemy.h"
 
 void introduction() { 
     cout << "Welcome to the Castle Adventure!\n";
@@ -49,6 +50,8 @@ int main() {
     // Introduction
     introduction();
 
+    int enemyIndex = 0;
+
     // Interaction with rooms
     auto current = castleRooms.getHead();
     while (current != nullptr) { // Runs while 'current' does not point to a null object
@@ -75,7 +78,44 @@ int main() {
             // OPTION 3: Player chooses to fight Enemy
             if (choice == 3) {
                 cout << "FightO\n";
-                current = current->next;
+
+                ifstream enemyFile("enemies.csv");
+                
+                if (enemyFile.is_open()) {
+                    string line;
+                    int currentLine = 0;
+                    bool found = false;
+                    while (getline(enemyFile, line)) {
+                        if (currentLine == enemyIndex) {
+                            stringstream ss(line);
+                            string name, description, actionsStr;
+                            vector<string> actions;
+
+                            getline(ss, name, ',');
+                            getline(ss, description, ',');
+                            getline(ss, actionsStr);
+
+                            stringstream actionStream(actionsStr);
+                            string action;
+                            while (getline(actionStream, action, ';')) {
+                                actions.push_back(action);
+                            }
+
+                            Enemy enemy(name, description, actions);
+                            cout << enemy.toString() << endl;
+                            found = true;
+                            break;
+                        }
+                        currentLine++;
+                    }
+                    enemyFile.close();
+                    enemyIndex = (enemyIndex + 1) % 4; // Cycle through 4 enemies; adjust as needed based on actual number of enemies
+                } else {
+                    cout << "Unable to open enemies.csv" << endl;
+                }
+                
+                // pushes into next room, may remove
+                //current = current->next;
             }
 
             // OPTION 4: Assumes 'Leave the room' is the last action
