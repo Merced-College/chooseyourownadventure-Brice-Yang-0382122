@@ -77,7 +77,6 @@ int main() {
 
             // OPTION 3: Player chooses to fight Enemy
             if (choice == 3) {
-                cout << "FightO\n";
 
                 ifstream enemyFile("enemies.csv");
                 
@@ -114,8 +113,10 @@ int main() {
                     cout << "Unable to open enemies.csv" << endl;
                 }
                 
+                //Add combat dialogue, combat mechanics, and consequences of combat here.
+
                 // pushes into next room, may remove
-                //current = current->next;
+                current = current->next;
             }
 
             // OPTION 4: Assumes 'Leave the room' is the last action

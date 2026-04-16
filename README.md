@@ -6,10 +6,7 @@ Brice Yang
 
 
 TO DO
-'players.csv' remove old strings; add new strings
-'enemies.csv' remove old strings; add new strings
+'main' Add combat dialogue, combat mechanics, and consequences of combat
 'main' integrate 'player' into
-'main' integrate 'enemies' into
-'Room' class change to allow enemies; Also change 'room.csv'
 'main' add 'void' logic for 'player_health' and 'enemy'
 
