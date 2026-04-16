@@ -13,14 +13,8 @@ void introduction() {
     cout << "Choose your actions wisely. Let's start your journey!\n\n";
 }
 
-
-#include <fstream>
-#include <sstream>
-#include "LinkedList.h"
-
 int main() {
     LinkedList castleRooms;
-    LinkedList castleEnemies;
     ifstream file("rooms.csv");
     string line;
     
@@ -74,14 +68,21 @@ int main() {
         // Process choice
         if (choice < 1 || choice > current->room.getActions().size()) {
             cout << "Invalid choice. Try again.\n"; // Declares after an invalid input by the User.
-        } else {
+        } 
+        else {
             cout << "You chose: " << current->room.getActions()[choice - 1] << endl;
-            if (choice == current->room.getActions().size()) {  // Assumes 'Leave the room' is the last action
+
+            // OPTION 3: Player chooses to fight Enemy
+            if (choice == 3) {
+                cout << "FightO\n";
+                current = current->next;
+            }
+
+            // OPTION 4: Assumes 'Leave the room' is the last action
+            if (choice == current->room.getActions().size()) {  
                 current = current->next;  // Move to next room
             }
             
-            
-
         }
 
     }
